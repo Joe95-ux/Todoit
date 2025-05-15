@@ -1,0 +1,18 @@
+# Ignore React build files
+/client/node_modules/
+/client/build/
+/client/.env
+
+# Ignore PHP server logs or config
+/server/vendor/
+/server/.env
+/server/*.log
+/server/*.bak
+/server/*.sql
+
+# Ignore OS & editor files
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
