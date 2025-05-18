@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import TaskForm from './TaskForm';
-import TaskList from './TaskList';
+import { useEffect, useState } from 'react';
+import TaskForm from '@/components/TaskForm';
+import TaskList from '@/components/TaskList';
 import axios from 'axios';
+
+type TaskType = {
+  id: string,
+  title: string,
+  completed: boolean,
+}
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -15,12 +21,12 @@ function App() {
     fetchTasks();
   }, []);
 
-  const addTask = async (title) => {
+  const addTask = async (title:string) => {
     await axios.post('http://localhost/todo-app/backend/routes/api.php', { title });
     fetchTasks();
   };
 
-  const toggleTask = async (task) => {
+  const toggleTask = async (task:TaskType) => {
     await axios.put('http://localhost/todo-app/backend/routes/api.php', {
       id: task.id,
       completed: !task.completed
@@ -28,7 +34,7 @@ function App() {
     fetchTasks();
   };
 
-  const deleteTask = async (id) => {
+  const deleteTask = async (id:string) => {
     await axios.delete('http://localhost/todo-app/backend/routes/api.php', {
       data: { id }
     });

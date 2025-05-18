@@ -1,6 +1,16 @@
-import React from 'react';
 
-export default function TaskList({ tasks, onToggle, onDelete }) {
+type TaskType ={
+  id: string,
+  title: string,
+  completed: boolean
+}
+type TaskListType = {
+  tasks: TaskType[],
+  onToggle: (task: TaskType)=>void,
+  onDelete: (id: string)=> void,
+}
+
+export default function TaskList({ tasks, onToggle, onDelete }: TaskListType) {
   return (
     <ul>
       {tasks.map((task) => (

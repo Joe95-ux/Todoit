@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 
-export default function TaskForm({ onAdd }) {
+type TaskFormType = {
+  onAdd: (title:string)=> void,
+}
+
+export default function TaskForm({ onAdd }: TaskFormType) {
   const [title, setTitle] = useState('');
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!title.trim()) return;
     onAdd(title);
